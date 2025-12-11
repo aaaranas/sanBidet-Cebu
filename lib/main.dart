@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/landing_page.dart';
 
-void main() {
+Future<void> main() async {
+  // Load .env BEFORE running the app
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+
   runApp(const MyApp());
 }
 
@@ -11,8 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'San Bidet? Cebu',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      title: 'SanBidet Cebu',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: Colors.blue,
+        useMaterial3: true,
+      ),
       home: LandingPage(),
     );
   }
