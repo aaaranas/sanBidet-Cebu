@@ -3,8 +3,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/landing_page.dart';
 
 Future<void> main() async {
-  // Load .env BEFORE running the app
+  // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables from .env file
   await dotenv.load(fileName: ".env");
 
   runApp(const MyApp());

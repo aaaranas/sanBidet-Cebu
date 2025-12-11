@@ -12,6 +12,7 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   BitmapDescriptor? bidetIcon;
+  late GoogleMapController mapController;
 
   @override
   void initState() {
@@ -81,6 +82,9 @@ class _MapPageState extends State<MapPage> {
           zoom: 12,
         ),
         markers: markers,
+        onMapCreated: (controller) {
+          mapController = controller;
+        },
       ),
     );
   }
